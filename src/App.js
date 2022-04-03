@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Switch } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { authentication } from "./Firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import Home from "./Pages/Home";
+import SignOut from "./Pages/Signout";
 import SignIn from "./components/SignIn";
+import AppLayout from './components/layout/AppLayout';
+import Home from './Pages/Home';
+import AddRecipe from './Pages/AddRecipe';
+import Profile from './Pages/Profile';
 
 function App() {
   const [isUserSignedIn, setisUserSignedIn] = useState(true);
@@ -25,18 +27,24 @@ function App() {
   if(isUserSignedIn == true){
     return (
       <Router>
-        <Switch>
-          <Route exact path="/" component={Home}/>
-        </Switch>
+        <Routes>
+          {/*<Route exact path="/" element={Home}/>*/}
+          <Route path='/' element={<AppLayout/>}>
+            <Route index element={<Home/>} />
+            <Route path='/started' element={<AddRecipe/>} />
+            <Route path='/calendar' element={<Profile/>} />
+            <Route path='/user' element={<SignOut/>} />
+          </Route>
+        </Routes>
       </Router>
     );
   }else{
     return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={SignIn}/>
-      </Switch>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SignIn/>}/>
+        </Routes>
+      </Router>
     );
   }
 }
