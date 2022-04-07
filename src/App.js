@@ -14,7 +14,7 @@ function App() {
 
   //Checking if user is signed in then changing state
   onAuthStateChanged(authentication, user => {
-    console.log('State Changed Clicked')
+    //console.log('State Changed Clicked')
     // Check for user status
     if(user){
       return setisUserSignedIn(true);
@@ -24,16 +24,16 @@ function App() {
 
   });
 
-  if(isUserSignedIn == true){
+  if(isUserSignedIn === true){
     return (
       <Router>
         <Routes>
           {/*<Route exact path="/" element={Home}/>*/}
           <Route path='/' element={<AppLayout/>}>
             <Route index element={<Home/>} />
-            <Route path='/started' element={<AddRecipe/>} />
-            <Route path='/calendar' element={<Profile/>} />
-            <Route path='/user' element={<SignOut/>} />
+            <Route path='/addRecipe' element={<AddRecipe/>} />
+            <Route path='/profile' element={<Profile/>} />
+            <Route path='/signOut' element={<SignOut/>} />
           </Route>
         </Routes>
       </Router>

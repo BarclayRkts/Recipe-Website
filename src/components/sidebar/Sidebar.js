@@ -12,20 +12,20 @@ const sidebarNavItems = [
     {
         display: 'Add Recipe',
         icon: <i className='bx bx-star'></i>,
-        to: '/started',
-        section: 'started'
+        to: '/addRecipe',
+        section: 'addRecipe'
     },
     {
         display: 'Profile',
         icon: <i className='bx bx-calendar'></i>,
-        to: '/calendar',
-        section: 'calendar'
+        to: '/profile',
+        section: 'profile'
     },
     {
         display: 'Logout',
         icon: <i className='bx bx-user'></i>,
-        to: '/user',
-        section: 'user'
+        to: '/signOut',
+        section: 'signOut'
     },
     // {
     //     display: 'Orders',
