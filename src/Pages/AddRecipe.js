@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { v4 as uuidv4 } from 'uuid';
 import { storage, db } from  "../Firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { collection, getDocs, addDoc} from "firebase/firestore";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytesResumable, uploadBytes } from "firebase/storage";
 
 function AddRecipe() {
   const [recipeName, setRecipeName] = useState("");
@@ -15,8 +15,15 @@ function AddRecipe() {
   const [pic, setPic] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [picURL, setPicURL] = useState("");
-  const [user, setUser] = useState("");
-  
+  const [userID, setUserID] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [email, setEmail] = useState("");
+  const [uniqueTag, setUniqueTag] = useState("");
+
+  useEffect(() => {
+    secondHalf();
+  }, [picURL])
+
   const handleName = (e) => {
     setRecipeName(e.target.value);
   }
@@ -38,24 +45,41 @@ function AddRecipe() {
   }
 
   const addItems = (e) => {
-    e.preventDefault();
-    let uniqueTag = uuidv4();
+    // let uniqueTag = uuidv4();
+    let tag = uuidv4();
     const auth = getAuth();
     const user = auth.currentUser;
+    
     uploadImage(uniqueTag);
     // console.log("URL inside of add Items", picURL);
     if(user != null){
       console.log(user.uid);
-      setUser(user.displayName);
+      setDisplayName(user.displayName);
     }
-    addDataToDB(uniqueTag, recipeName, ingredients, description, notes, picURL, user.uid, user.displayName, user.email);
 
-    setRecipes(prevItems =>{
-      return [...prevItems, {id: uniqueTag, recipeName, ingredients, description, notes, picURL, userID: user.uid, displayName: user.displayName}]
-    });
+    setUniqueTag(tag);
+    setUserID(user.uid);
+    setDisplayName(user.displayName);
+    setEmail(user.email);
+
+
+    //addDataToDB(uniqueTag, recipeName, ingredients, description, notes, picURL, user.uid, user.displayName, user.email);
+
+    console.log("Use state PicURL", picURL)
 
     console.log(recipes);
     alert("Successfully Added")
+    e.preventDefault();
+  }
+
+  const secondHalf = () => {
+    if (recipeName != ""){
+      addDataToDB(uniqueTag, recipeName, ingredients, description, notes, picURL, userID, displayName, email);
+    }
+    setRecipes(prevItems =>{
+      return [...prevItems, {id: uniqueTag, recipeName, ingredients, description, notes, picURL, userID, displayName: displayName}]
+    });
+
   }
 
   const uploadImage = (uniqueTag) => {
@@ -67,17 +91,22 @@ function AddRecipe() {
 
     const imageRef = ref(storage, `images/${uniqueTag}`);
 
-    uploadBytesResumable(imageRef, pic, metadata).then((snapshot) => {
+    uploadBytes(imageRef, pic, metadata).then((snapshot) => {
       // console.log('File metadata:', snapshot.metadata);
       console.log("uploaded")
 
       getDownloadURL(snapshot.ref).then((url) => {
         // console.log('File available at', url);
-        setPicURL(String(url))
+        let modURL = String(url);
+        console.log("mod: ", modURL);
+        setPicURL(modURL)
+
+        console.log("Use state PicURL", picURL);
       });
     }).catch((error) => {
       console.error('Upload failed', error);
     });
+    
 
   }
 
@@ -85,6 +114,7 @@ function AddRecipe() {
     //console.log("db", {uniqueTag, recipeName, ingredients, description, notes, picURL, uid, displayName});
     const itemRef = collection(db, "Recipes");
     const payload = {id: uniqueTag, recipeName, ingredients, description, notes, picURL, userID: uid, displayName, email};
+    console.log("payload", payload)
     await addDoc(itemRef, payload)
     console.log("successfully added");
   
@@ -138,8 +168,8 @@ function AddRecipe() {
           margin="normal"
           onChange={handleNotes}
         />
-        <label htmlFor="contained-button-file">
-          <input accept="image/*" id="contained-button-file" multiple type="file" onChange={handlePic}/>
+        <label>
+          <input accept="image/*" type="file" onChange={handlePic}/>
         </label>
         <button type="submit">Publish Recipe</button>
       </form>

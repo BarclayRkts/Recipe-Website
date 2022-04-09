@@ -1,20 +1,8 @@
 Todo:
-Side Navigation
-All of Recipes on Home Screen
-Create a recipe 
-Contact/About Page
-Search through Recipes
-Profile see your posts and your info using MUI Tabs
-MUI card component to Home Screen
-Forum Page
-
-
-
-
-
-
-
-
+Add Small description to Form and Database
+Fix the images on firebase. Images not displaying.
+Add user image URL to firebase.
+Create view more page to display entire recipe. 
 
 
 Sidebar Link:
