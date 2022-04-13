@@ -7,7 +7,6 @@ import SignIn from "./components/SignIn";
 import AppLayout from './components/layout/AppLayout';
 import Home from './Pages/Home';
 import AddRecipe from './Pages/AddRecipe';
-import Profile from './Pages/Profile';
 
 function App() {
   const [isUserSignedIn, setisUserSignedIn] = useState(true);
@@ -32,7 +31,7 @@ function App() {
           <Route path='/' element={<AppLayout/>}>
             <Route index element={<Home/>} />
             <Route path='/addRecipe' element={<AddRecipe/>} />
-            <Route path='/profile' element={<Profile/>} />
+            {/* <Route path='/profile' element={<Profile/>} /> */}
             <Route path='/signOut' element={<SignOut/>} />
           </Route>
         </Routes>

@@ -7,7 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
-import Modal from "./Modal";
+// import Modal from "./Modal";
+import Modal from './Modal';
 
 const RecipeCard = (props) => {
 
@@ -45,7 +46,7 @@ const RecipeCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button className="openModalBtn" onClick={handleOpen} size="small">View More</Button>
+        <Button className="openModalBtn" variant="outlined" onClick={handleOpen} size="small">View Recipe</Button>
       </CardActions>
       {open && <Modal recipe={props.recipe} open={handleOpen} handleClose={handleClose} />}
       </Card>

@@ -1,53 +1,91 @@
-import React from 'react';
-import Box from '@mui/material/Box';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import "../styles/Modal.css"
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 700,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
 
-export default function MModal({handleClose, open, recipe}) {
+const BootstrapDialogTitle = (props) => {
+  const { children, onClose, ...other } = props;
 
   return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+};
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
+export default function CustomizedDialogs({handleClose, open, recipe}) {
+ 
+  return (
     <div>
-      <Modal
-        open={open}
+      <BootstrapDialog
         onClose={handleClose}
+        open={open}
       >
-        <Box sx={style}>
-{/* 
-          <Typography variant="h6" component="h2" sx={{ mt: 2 }}>
-            {recipe.displayName}
-          </Typography> */}
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose} variant="h8" component="h2">
+          {recipe.recipeName}
+          <h5>{recipe.displayName}</h5>
+          <DialogContent dividers></DialogContent>
+          <img
+          className="recipeImg"
+          src={`${recipe.picURL}`}
+          width="300" 
+          height="300"
+          />
+        </BootstrapDialogTitle>
 
-          <Typography id="modal-modal-title" variant="h8" component="h2" sx={{ mb: 4 }}>
-            {recipe.recipeName}
-          </Typography>
+        <DialogContent dividers>
 
-          <label>Ingredients
-          <Typography id="modal-modal-description" sx={{ mb: 4 }}>
+        <label>Ingredients
+          <Typography gutterBottom sx={{ mb: 4 }}>
             {recipe.ingredients}
           </Typography>
-          </label>
+        </label>
 
-          <label>Instructions
-          <Typography id="modal-modal-description" >
+        <label>Instructions
+          <Typography gutterBottom sx={{ mb: 4 }}>
             {recipe.description}
           </Typography>
-          </label>
-          <Button id="closeBtn" onClick={handleClose}>X</Button>
-        </Box>
-      </Modal>
+        </label>
+
+        </DialogContent>
+
+      </BootstrapDialog>
     </div>
   );
 }

@@ -1,6 +1,4 @@
 Todo:
-Create Details Page on Button Click.
-Create view more page to display entire recipe. 
 
 
 Sidebar Link:

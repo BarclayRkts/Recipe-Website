@@ -15,12 +15,12 @@ const sidebarNavItems = [
         to: '/addRecipe',
         section: 'addRecipe'
     },
-    {
-        display: 'Profile',
-        icon: <i className='bx bx-calendar'></i>,
-        to: '/profile',
-        section: 'profile'
-    },
+    // {
+    //     display: 'Profile',
+    //     icon: <i className='bx bx-calendar'></i>,
+    //     to: '/profile',
+    //     section: 'profile'
+    // },
     {
         display: 'Logout',
         icon: <i className='bx bx-user'></i>,
