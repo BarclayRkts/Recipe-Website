@@ -1,4 +1,8 @@
 Todo:
+Add Small description to Form and Database
+Fix the images on firebase. Images not displaying.
+Add user image URL to firebase.
+Create view more page to display entire recipe. 
 
 
 Sidebar Link:
@@ -6,6 +10,48 @@ https://github.com/trananhtuat/animated-sidebar-indicator
 
 Fake Data:
 Pasta
+Todo:
+
+
+Sidebar Link:
+https://github.com/trananhtuat/animated-sidebar-indicator
+
+Fake Data:
+Pasta
+
+Ingredients:
+-Flour
+-Butter
+-Water
+-Sausages
+-Tomatoes
+
+Description:
+1. Make the Pasta
+2. Make the Sausages
+3. Eat
+
+Notes:
+Enjoy
+
+
+pasta - I used penne, but you can use the more traditional ziti pasta. But really any kind of smaller pasta will work here such as elbow pasta, rotini, or farfalle.
+olive oil
+Italian sausage - you could use any kind of ground meat as well, such as ground beef, pork, turkey, or chicken. You may have to increase the amount of Italian seasoning used to compensate for the flavours in Italian sausage.
+onion
+garlic
+tomato sauce
+herbs - I used Italian seasoning, fresh parsley and fresh basil.
+cheese - Parmesan and mozzarella cheese.
+salt and pepper
+
+1. Boil the pasta. Bring a large pot of salted water to a boil over medium-high heat. Add pasta and cook until al dente (fully cooked but still firm), about 8-10 minutes, or according to package directions. Drain well and set aside.
+2. Cook the sausage. Meanwhile, heat olive oil in a large pot (or 4 qt. Dutch oven) for 2 minutes over medium-high heat until the hot oil sizzles. Add sausage and stir to cook until browned, about 5-7 minutes. Use a spatula to break the sausages into small pieces. Add onions and garlic and sauté until soft and tender, about 2-3 minutes. Stir to combine.
+3. Make the sauce. Pour in tomato sauce, turn the heat down to medium, and bring the meat sauce to a simmer, stirring occasionally. Stir in Italian seasoning, ½ cup Parmesan cheese, parsley and basil. Season with salt and pepper. Turn the heat down to low and simmer for 5-7 minutes, stirring occasionally. Simmering helps develop richer flavour in the sauce.
+4. Add the pasta. Transfer the cooked and drained pasta into the sauce and toss well to mix evenly.
+5. Pasta bake with sausage (baked ziti) is a lazy day lasagna with layers of pasta tossed in a rich meat sauce, layered with mozzarella, and baked. | aheadofthyme.com
+6. Assemble. Spread half of the pasta into a 9x13 casserole pan and top with half of mozzarella cheese (1.5 cups). Add the remaining pasta and sprinkle the remaining mozzarella and Parmesan cheese evenly on top.
+7.Bake. Bake the pasta in a 375F preheated oven for 25 minutes until the melted cheese is golden brown. Let cool for 15 minutes, then serve.
 
 Ingredients:
 -Flour
