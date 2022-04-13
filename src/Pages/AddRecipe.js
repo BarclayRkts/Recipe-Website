@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { v4 as uuidv4 } from 'uuid';
 import { storage, db } from  "../Firebase/firebase";
 import { getAuth } from "firebase/auth";
-import { collection, getDocs, addDoc} from "firebase/firestore";
+import { collection, addDoc} from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytesResumable, uploadBytes } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 function AddRecipe() {
   const [recipeName, setRecipeName] = useState("");
@@ -19,6 +20,7 @@ function AddRecipe() {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [uniqueTag, setUniqueTag] = useState("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     secondHalf();
@@ -62,14 +64,12 @@ function AddRecipe() {
     setDisplayName(user.displayName);
     setEmail(user.email);
 
-
     //addDataToDB(uniqueTag, recipeName, ingredients, description, notes, picURL, user.uid, user.displayName, user.email);
 
-    console.log("Use state PicURL", picURL)
-
-    console.log(recipes);
     alert("Successfully Added")
     e.preventDefault();
+    navigate("/");
+
   }
 
   const secondHalf = () => {
@@ -98,10 +98,8 @@ function AddRecipe() {
       getDownloadURL(snapshot.ref).then((url) => {
         // console.log('File available at', url);
         let modURL = String(url);
-        console.log("mod: ", modURL);
         setPicURL(modURL)
 
-        console.log("Use state PicURL", picURL);
       });
     }).catch((error) => {
       console.error('Upload failed', error);
@@ -160,7 +158,7 @@ function AddRecipe() {
         />
         <TextField
           id="Notes"
-          label="Notes"
+          label="Small Description"
           fullWidth
           variant="filled"
           multiline
@@ -169,7 +167,7 @@ function AddRecipe() {
           onChange={handleNotes}
         />
         <label>
-          <input accept="image/*" type="file" onChange={handlePic}/>
+          <input accept="image/*" type="file" onChange={handlePic} required/>
         </label>
         <button type="submit">Publish Recipe</button>
       </form>

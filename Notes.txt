@@ -1,7 +1,5 @@
 Todo:
-Add Small description to Form and Database
-Fix the images on firebase. Images not displaying.
-Add user image URL to firebase.
+Create Details Page on Button Click.
 Create view more page to display entire recipe. 
 
 

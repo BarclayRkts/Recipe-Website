@@ -15,6 +15,9 @@ export default function Home() {
     const auth = getAuth();
     const user = auth.currentUser;
 
+    // console.log("auth", auth);
+    // console.log("user", auth.currentUser);
+
     if(user != null){
       let photoURL = user.photoURL;
       setPic(photoURL);
@@ -37,12 +40,15 @@ export default function Home() {
   }
 
   return (
-    <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    recipes.length > 0 ? (
+      <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
         {
           Object.keys(recipes).map((item, i) => (
-            <Grid key={i} item xs={12} md={6} lg={3}> <RecipeCard key={i} recipe={recipes[item]} photo={pic}/></Grid>
+            <Grid key={i} item xs={12} md={6} lg={3} alignItems="stretch"> <RecipeCard key={i} recipe={recipes[item]} photo={pic}/></Grid>
         ))
         }  
     </Grid>
+     ) : null
+    
   )
 }
