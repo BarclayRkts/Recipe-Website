@@ -11,6 +11,7 @@ import AddRecipe from './Pages/AddRecipe';
 function App() {
   const [isUserSignedIn, setisUserSignedIn] = useState(true);
 
+  console.log("This is the new branch");
   //Checking if user is signed in then changing state
   onAuthStateChanged(authentication, user => {
     //console.log('State Changed Clicked')
