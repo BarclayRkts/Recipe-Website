@@ -1,5 +1,7 @@
 Todo:
+Recipes not adding to the database on hosted site.
 Fix the Sidebar
+Picture not storing in images folder
 
 Sidebar Link:
 https://github.com/trananhtuat/animated-sidebar-indicator

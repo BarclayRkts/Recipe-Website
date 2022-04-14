@@ -21,7 +21,7 @@ function SignIn() {
 
   return(
     <div class="container">
-      <div class="vertical-center">
+      <div className="vertical-center">
       <Button onClick={SignInWithFirebase} className="btn">Sign In with Google</Button>
       </div>
     </div>

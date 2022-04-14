@@ -20,10 +20,17 @@ function AddRecipe() {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [uniqueTag, setUniqueTag] = useState("");
+  const [uploaded, setUploaded] = useState(false);
   let navigate = useNavigate();
 
   useEffect(() => {
     secondHalf();
+  }, [picURL])
+
+  useEffect(() => {
+    if (uploaded) {
+      navigate("/");
+    }
   }, [picURL])
 
   const handleName = (e) => {
@@ -68,7 +75,8 @@ function AddRecipe() {
 
     alert("Successfully Added")
     e.preventDefault();
-    navigate("/");
+    // navigate("/");
+    setUploaded(true)
 
   }
 
