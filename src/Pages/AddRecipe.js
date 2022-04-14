@@ -59,7 +59,7 @@ function AddRecipe() {
     const auth = getAuth();
     const user = auth.currentUser;
     
-    uploadImage(uniqueTag);
+    uploadImage(tag);
     // console.log("URL inside of add Items", picURL);
     if(user != null){
       console.log(user.uid);
