@@ -42,13 +42,13 @@ const Sidebar = () => {
     const indicatorRef = useRef();
     const location = useLocation();
 
-    useEffect(() => {
-        setTimeout(() => {
-            const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
-            indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-            setStepHeight(sidebarItem.clientHeight);
-        }, 50);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
+    //         indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
+    //         setStepHeight(sidebarItem.clientHeight);
+    //     }, 50);
+    // }, []);
 
     // change active index
     useEffect(() => {
@@ -71,7 +71,7 @@ const Sidebar = () => {
             ></div>
             {
                 sidebarNavItems.map((item, index) => (
-                    <Link to={item.to} key={index}>
+                    <Link className="linking" to={item.to} key={index}>
                         <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
                             <div className="sidebar__menu__item__icon">
                                 {item.icon}

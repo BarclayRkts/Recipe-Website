@@ -1,9 +1,5 @@
 Todo:
-Add Small description to Form and Database
-Fix the images on firebase. Images not displaying.
-Add user image URL to firebase.
-Create view more page to display entire recipe. 
-
+Fix the Sidebar
 
 Sidebar Link:
 https://github.com/trananhtuat/animated-sidebar-indicator
